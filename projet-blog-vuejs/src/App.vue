@@ -12,7 +12,9 @@
       <div><p>Login</p></div>
       <button class="button">Créer une page</button>
     </nav>
+
     <router-view />
+
     <!-- <page-admin></page-admin> -->
     <!-- <blog-component></blog-component> -->
   </div>

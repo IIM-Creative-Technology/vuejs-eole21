@@ -17,6 +17,11 @@ export default {
   components: {
     BlogComponent,
   },
+  data() {
+    return {
+      lil: false,
+    };
+  },
 };
 </script>
 

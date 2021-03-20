@@ -9,7 +9,7 @@
         <p>{{ description }}</p>
       </div>
     </div>
-    <div class="mesbuttons">
+    <div :style="modif ? show : hidden" class="mesbuttons">
       <button class="modifier">Editer</button>
       <button class="supprimer">x</button>
     </div>
@@ -20,10 +20,27 @@
 export default {
   name: "BlogComponent",
   props: {
+    modif: {
+      type: Boolean,
+      default: true,
+    },
     img: String,
     title: String,
     description: String,
   },
+  data() {
+    return {
+      // modif: false,
+      show: {
+        display: "block",
+      },
+      hidden: {
+        display: "none",
+      },
+    };
+  },
+  // Methode 2 pour afficher le titre et l'image
+  // props: ["img", "title", "description"],
 };
 </script>
 
@@ -39,7 +56,6 @@ export default {
 
 .modifier {
   margin-left: 1100px;
-
   margin-right: 20px;
   width: 80px;
   height: 50px;
