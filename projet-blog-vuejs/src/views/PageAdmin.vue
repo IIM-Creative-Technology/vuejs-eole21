@@ -6,12 +6,12 @@
       description="La nature est composé de.."
     ></blog-component>
 
-    <p>bvdfbfdb</p>
+    <!-- <p>bvdfbfdb</p> -->
   </div>
 </template>
 
 <script>
-import BlogComponent from "./BlogComponent.vue";
+import BlogComponent from "../components/BlogComponent.vue";
 export default {
   name: "PageAdmin",
   components: {

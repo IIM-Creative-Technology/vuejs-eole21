@@ -1,22 +1,33 @@
 <template>
   <div>
     <nav>
-      <div><p>Créer le blog |</p></div>
-      <div><p>Blog |</p></div>
+      <router-link to="/admin">
+        <div><p>Gérez le blog |</p></div></router-link
+      >
+
+      <router-link to="/blog"
+        ><div><p>Blog |</p></div></router-link
+      >
+
       <div><p>Login</p></div>
       <button class="button">Créer une page</button>
     </nav>
-    <page-admin></page-admin>
+    <router-view />
+    <!-- <page-admin></page-admin> -->
+    <!-- <blog-component></blog-component> -->
   </div>
 </template>
 
 <script>
-import PageAdmin from "./components/PageAdmin.vue";
+// import PageAdmin from "./views/PageAdmin.vue";
+// import BlogComponent from "./components/BlogComponent.vue";
 
 export default {
   name: "App",
+
   components: {
-    PageAdmin,
+    // PageAdmin,
+    // BlogComponent,
   },
 };
 </script>
@@ -42,3 +53,4 @@ nav div p {
   padding-right: 10px;
 }
 </style>
+
