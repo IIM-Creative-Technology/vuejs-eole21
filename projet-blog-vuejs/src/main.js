@@ -1,5 +1,22 @@
 import { createApp } from 'vue'
+
 import App from './App.vue'
 import router from './router'
+import store from './store'
 
-createApp(App).use(router).mount('#app')
+import { mapGetters , mapMutations} from "vuex";
+createApp(App)
+.mixin(
+{ 
+       computed: {
+        ...mapGetters(["getArticles","getIdPostEdit"]),
+      },
+      methods: {
+          ...mapMutations(["setIdPostEdit"])
+      }
+    }
+)
+.use(store)
+.use(router)
+.mount('#app')
+
