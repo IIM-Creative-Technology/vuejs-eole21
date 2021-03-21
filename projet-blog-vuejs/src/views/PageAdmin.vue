@@ -16,19 +16,21 @@
           :article="item"
         >
         </blog-component>
-        <!-- <p>bvdfbfdb</p> -->
       </div>
 
       <div v-if="getPostEdit != undifined" class="col-6">
+        <!-- On affiche la modification du post uniquement lorsqu'il y a un article a modifier -->
         <add-or-modify-post action="edit"></add-or-modify-post>
       </div>
     </div>
 
     <div v-if="!getPostEdit && getCreatePostClick == true">
+      <!-- Lorsqu'on click sur creer une page et qu'il n'y a pas de modofications en cours on affiche le formulaire de création -->
       <create-post></create-post>
     </div>
-  </div>
+  </div >
 </template>
+
 
 <script>
 import BlogComponent from "../components/BlogComponent.vue";

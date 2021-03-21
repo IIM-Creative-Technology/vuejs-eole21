@@ -43,17 +43,5 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
-nav {
-  display: flex;
-}
-.button {
-  margin-top: 18px;
-  margin-left: 1000px;
-  width: 150px;
-  background-color: #f9e4b7;
-}
-nav div p {
-  padding-right: 10px;
-}
 </style>
 

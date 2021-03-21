@@ -20,13 +20,14 @@ export default createStore({
     img: "data:image/jpeg;base64,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",
     title: "Lait",
 
-  }],
-  id_post_edit: "",
-  id_post_delete: "",
-  postEdit: undefined,
-  createPostClick: false,
-  titlePostReading: ""
+  }],// Les posts du blog 
+  id_post_edit: "", // Id du post en cours de modification
+  id_post_delete: "", // Id du post en cours de suppression
+  postEdit: undefined, // Post en cours de modification
+  createPostClick: false, // Indique qu'on a cliquer sur le button de création de nouveau post
+  titlePostReading: "" // Le titre du post que l'on est en train de lire 
   }, 
+  // Les getters nous permettent de récupérer les elements dans le state
   getters:{
     getArticles:  (state) => state.articles,
     getIdPostEdit: (state) => state.id_post_edit,
@@ -35,6 +36,7 @@ export default createStore({
     getCreatePostClick: (state)=>state.createPostClick,
     getBlogFromTitle:(state)=>state.articles.find(e => e.title==state.titlePostReading.replace("_"," "))
   },
+  // Les mutations permet de modifier le state
   mutations: {
     setIdPostEdit: (state,value) => state.id_post_edit = value,
     setPostEdit: (state,article) => state.postEdit = article,
