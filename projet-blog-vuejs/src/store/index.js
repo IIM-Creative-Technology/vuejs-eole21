@@ -22,22 +22,32 @@ export default createStore({
 
   }],
   id_post_edit: "",
-  postEdit: undefined
+  id_post_delete: "",
+  postEdit: undefined,
+  createPostClick: false
   }, 
   getters:{
     getArticles:  (state) => state.articles,
     getIdPostEdit: (state) => state.id_post_edit,
-    getPostEdit: (state)=> state.postEdit
+    getPostEdit: (state)=> state.postEdit,
+    getIdPostDelete: (state)=> state.id_post_delete,
+    getCreatePostClick: (state)=>state.createPostClick,
   },
   mutations: {
     setIdPostEdit: (state,value) => state.id_post_edit = value,
-    setPostEdit: (state,article) => {
-      state.postEdit = article
-    },
+    setPostEdit: (state,article) => state.postEdit = article,
     updatePost(state,post){
      let oldPostIndex =  state.articles.findIndex( e => e.id == post.id)
      state.articles[oldPostIndex]= post;
-    }
+    },
+    setIdPostDelete: (state,idPost) => {
+      let postToDelete =  state.articles.findIndex( e => e.id == idPost)
+      state.articles.splice(postToDelete,1)  
+    },
+    addPost: (state,post)=>{
+state.articles.push(post);
+    },
+    setCreatePostClick: (state,value)=>{state.createPostClick=value}
   },
  
   actions: {

@@ -1,6 +1,8 @@
 <template>
   <div class="d-flex">
-    <div class="col-6">
+    <div v-on:click="createPost" class="btn">Créer une page</div>
+
+    <div class="col-6" v-show="getCreatePostClick == false">
       <blog-component
         v-for="(item, index) in getArticles"
         :key="index"
@@ -11,20 +13,31 @@
     </div>
 
     <div v-if="getPostEdit != undifined" class="col-6">
-      <modify-post></modify-post>
+      <add-or-modify-post action="edit"></add-or-modify-post>
+    </div>
+
+    <div v-if="getCreatePostClick == true">
+      <create-post></create-post>
     </div>
   </div>
 </template>
 
 <script>
 import BlogComponent from "../components/BlogComponent.vue";
-import ModifyPost from "../components/ModifyPost.vue";
+import AddOrModifyPost from "../components/AddOrModifyPost.vue";
+import CreatePost from "../components/CreatePost.vue";
 
 export default {
   name: "PageAdmin",
   components: {
     BlogComponent,
-    ModifyPost,
+    AddOrModifyPost,
+    CreatePost,
+  },
+  methods: {
+    createPost() {
+      this.setCreatePostClick(true);
+    },
   },
 };
 </script>

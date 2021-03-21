@@ -3,8 +3,16 @@
     <div class="mesinputs">
       <div>
         <label for="title">Titre de la page</label>
-        <input readonly id="title" type="text" v-model="article.title" />
+
+        <input
+          v-if="action == 'add'"
+          id="title"
+          type="text"
+          v-model="article.title"
+        />
+        <input v-else readonly id="title" type="text" v-model="article.title" />
       </div>
+
       <div>
         <label for="meta_title">Meta Titre</label>
         <input id="meta_title" v-model="article.meta_title" type="text" />
@@ -12,8 +20,9 @@
 
       <img
         class="rounded-circle img-thumbnail"
+        id="imagePreview"
         :src="article.img"
-        :alt="article.title"
+        alt=""
       />
       <div>
         <label for="description">Meta Description</label>
@@ -25,8 +34,6 @@
       </div>
     </div>
     <div>
-      <img src="" alt="" />
-
       <label for="chooseImage" class="btn">Modifier l'image</label>
       <input
         v-on:change="changeImage"
@@ -43,11 +50,17 @@
     rows="10"
     v-model="article.corps_texte"
   ></textarea>
-  <button v-on:click="onPostEditValidated">Valider les modifications</button>
+  <button v-show="action == 'edit'" v-on:click="onPostEditValidated">
+    Valider les modifications
+  </button>
+  <button v-show="action == 'add'" v-on:click="onAddPost">Créer la page</button>
 </template>
 
 <script>
 export default {
+  props: {
+    action: { type: String, default: () => "add" },
+  },
   mounted() {
     if (this.getPostEdit) {
       this.article = Object.assign({}, this.getPostEdit);
@@ -66,7 +79,7 @@ export default {
     };
   },
   methods: {
-    onPostEditValidated: function () {
+    onPostEditValidated() {
       this.updatePost(this.article);
       this.setPostEdit(undefined);
     },
@@ -83,8 +96,13 @@ export default {
       );
 
       if (file) {
+        console.log("fichier trouvé");
         reader.readAsDataURL(file);
       }
+    },
+    onAddPost() {
+      this.addPost(this.article);
+      this.setCreatePostClick(false);
     },
   },
 };

@@ -15,7 +15,7 @@
     </div>
     <div :style="modif ? show : hidden" class="mesbuttons">
       <button v-on:click="onEdit(article)" class="modifier">Editer</button>
-      <button class="supprimer">x</button>
+      <button v-on:click="deletePost(article.id)" class="supprimer">x</button>
     </div>
   </div>
 </template>
@@ -48,6 +48,9 @@ export default {
     onEdit: function (article) {
       this.setPostEdit(article);
       this.setIdPostEdit(article.id);
+    },
+    deletePost: function (idPost) {
+      this.setIdPostDelete(idPost);
     },
   },
   // Methode 2 pour afficher le titre et l'image

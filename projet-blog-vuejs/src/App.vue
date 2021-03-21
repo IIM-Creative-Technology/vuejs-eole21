@@ -10,7 +10,7 @@
       >
 
       <div><p>Login</p></div>
-      <button class="btn-primary">Créer une page</button>
+      <router-link to="/createPost"> </router-link>
     </nav>
 
     <router-view />

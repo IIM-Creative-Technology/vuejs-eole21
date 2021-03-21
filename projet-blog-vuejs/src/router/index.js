@@ -21,6 +21,7 @@ const routes = [
     name: 'PageAdmin',
     component: PageAdmin
   },
+  
 ]
 
 const router = createRouter({
