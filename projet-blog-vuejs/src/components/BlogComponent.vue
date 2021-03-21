@@ -1,10 +1,10 @@
 <template>
-  <div class="grandediv">
-    <div class="monimage">
+  <div v-on:click="readBlog" class="d-flex">
+    <div class="col-3">
       <img class="img-thumbnail" v-bind:src="article.img" alt="" />
     </div>
 
-    <div class="texte">
+    <div class="col-5">
       <div>
         <h1>{{ article.title }}</h1>
       </div>
@@ -13,9 +13,13 @@
       </div>
       <p>{{ article.corps_texte }}</p>
     </div>
-    <div :style="modif ? show : hidden" class="mesbuttons">
-      <button v-on:click="onEdit(article)" class="modifier">Editer</button>
-      <button v-on:click="deletePost(article.id)" class="supprimer">x</button>
+
+    <div
+      v-if="modif"
+      class="d-flex flex-row align-items-start justify-content-center col-3"
+    >
+      <div v-on:click="onEdit(article)" class="btn">Editer</div>
+      <div v-on:click="deletePost(article.id)" class="supprimer btn">x</div>
     </div>
   </div>
 </template>
@@ -52,6 +56,14 @@ export default {
     deletePost: function (idPost) {
       this.setIdPostDelete(idPost);
     },
+    readBlog (){
+      if(this.modif==false){
+      let titre = this.article.title.replace(" ","_")
+      this.$router.push('/blog/'+titre)
+      this.setTitlePostReading(titre)
+      }
+
+    }
   },
   // Methode 2 pour afficher le titre et l'image
   // props: ["img", "title", "description"],

@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Blog from '../views/Blog.vue'
 import PageAdmin from '../views/PageAdmin.vue'
+import ReadBlog from '../views/ReadBlog.vue'
 
 const routes = [
   {
@@ -20,6 +21,11 @@ const routes = [
     path: '/admin',
     name: 'PageAdmin',
     component: PageAdmin
+  },
+  {
+    path: '/blog/:title',
+    name: 'ReadBlog',
+    component: ReadBlog
   },
   
 ]

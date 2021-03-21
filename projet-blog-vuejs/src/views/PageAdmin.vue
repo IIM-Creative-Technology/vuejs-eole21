@@ -1,22 +1,30 @@
 <template>
-  <div class="d-flex">
-    <div v-on:click="createPost" class="btn">Créer une page</div>
+  <div>
+    <div class="d-flex justify-content-end mr-4">
+      <div v-on:click="createPost" class="btn col-3">Créer une page</div>
+    </div>
 
-    <div class="col-6" v-show="getCreatePostClick == false">
-      <blog-component
-        v-for="(item, index) in getArticles"
-        :key="index"
-        :article="item"
+    <div class="d-flex justify-content-center">
+      <div
+        :class="[{ 'col-6': getCreatePostClick }]"
+        v-show="getCreatePostClick == false"
       >
-      </blog-component>
-      <!-- <p>bvdfbfdb</p> -->
+        <blog-component
+          class="m-3"
+          v-for="(item, index) in getArticles"
+          :key="index"
+          :article="item"
+        >
+        </blog-component>
+        <!-- <p>bvdfbfdb</p> -->
+      </div>
+
+      <div v-if="getPostEdit != undifined" class="col-6">
+        <add-or-modify-post action="edit"></add-or-modify-post>
+      </div>
     </div>
 
-    <div v-if="getPostEdit != undifined" class="col-6">
-      <add-or-modify-post action="edit"></add-or-modify-post>
-    </div>
-
-    <div v-if="getCreatePostClick == true">
+    <div v-if="!getPostEdit && getCreatePostClick == true">
       <create-post></create-post>
     </div>
   </div>

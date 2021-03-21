@@ -1,59 +1,95 @@
 <template>
-  <div class="first">
-    <div class="mesinputs">
-      <div>
-        <label for="title">Titre de la page</label>
+  <div>
+    <div class="d-flex">
+      <div class="col-6"> 
+        <div class="form-group row">
+          <label for="title" class="col-4">Titre de la page</label>
+          <div class="col-8">
+            <input
+              v-if="action == 'add'"
+              id="title"
+              type="text"
+              v-model="article.title"
+              class="form-control"
+            />
+            <input
+              v-else
+              readonly
+              class="form-control"
+              id="title"
+              type="text"
+              v-model="article.title"
+            />
+          </div>
+        </div>
 
-        <input
-          v-if="action == 'add'"
-          id="title"
-          type="text"
-          v-model="article.title"
-        />
-        <input v-else readonly id="title" type="text" v-model="article.title" />
+        <div class="form-group row">
+          <label for="meta_title col-4 ">Meta Titre</label>
+          <div class="col-8">
+            <input
+              id="meta_title"
+              class="form-control"
+              v-model="article.meta_title"
+              type="text"
+            />
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="description col-4">Meta Description</label>
+          <div class="col-6">
+            <input
+              id="description"
+              class="form-control"
+              v-model="article.meta_description"
+              type="text"
+            />
+          </div>
+        </div>
       </div>
 
-      <div>
-        <label for="meta_title">Meta Titre</label>
-        <input id="meta_title" v-model="article.meta_title" type="text" />
-      </div>
-
-      <img
-        class="rounded-circle img-thumbnail"
-        id="imagePreview"
-        :src="article.img"
-        alt=""
-      />
-      <div>
-        <label for="description">Meta Description</label>
-        <input
-          id="description"
-          v-model="article.meta_description"
-          type="text"
-        />
+      <div class="col-6"> 
+        <div>
+          <img
+            class="rounded-circle img-thumbnail"
+            id="imagePreview"
+            :src="article.img"
+            alt=""
+          />
+        </div>
+        <div>
+          <label for="chooseImage" class="btn col-4">Modifier l'image</label>
+          <input
+            v-on:change="changeImage"
+            style="display: none"
+            class="col-6"
+            id="chooseImage"
+            type="file"
+          />
+        </div>
       </div>
     </div>
-    <div>
-      <label for="chooseImage" class="btn">Modifier l'image</label>
-      <input
-        v-on:change="changeImage"
-        style="display: none"
-        id="chooseImage"
-        type="file"
-      />
+
+    <div class="form-group row">
+      <label for="corps_texte col-4">Corps du post</label>
+      <div class="col-8">
+        <textarea
+          id="corps_texte"
+          cols="30"
+          rows="10"
+          v-model="article.corps_texte"
+          class="form-control"
+        ></textarea>
+      </div>
     </div>
+
+    <button v-show="action == 'edit'" v-on:click="onPostEditValidated">
+      Valider les modifications
+    </button>
+    <button v-show="action == 'add'" v-on:click="onAddPost">
+      Créer la page
+    </button>
   </div>
-  <label for="corps_texte">Corps du post</label>
-  <textarea
-    id="corps_texte"
-    cols="30"
-    rows="10"
-    v-model="article.corps_texte"
-  ></textarea>
-  <button v-show="action == 'edit'" v-on:click="onPostEditValidated">
-    Valider les modifications
-  </button>
-  <button v-show="action == 'add'" v-on:click="onAddPost">Créer la page</button>
 </template>
 
 <script>

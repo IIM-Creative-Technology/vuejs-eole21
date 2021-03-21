@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <router-link to="/admin">
         <div><p>Gérez le blog |</p></div></router-link
       >

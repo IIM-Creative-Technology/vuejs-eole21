@@ -10,10 +10,10 @@ createApp(App)
 .mixin(
 { 
        computed: {
-        ...mapGetters(["getArticles","getIdPostEdit","getPostEdit","getIdPostDelete","getCreatePostClick"]),
+        ...mapGetters(["getArticles","getIdPostEdit","getPostEdit","getIdPostDelete","getCreatePostClick","getBlogFromTitle"]),
       },
       methods: {
-          ...mapMutations(["setIdPostEdit","setPostEdit","updatePost","setIdPostDelete","addPost","setCreatePostClick"])
+          ...mapMutations(["setIdPostEdit","setPostEdit","updatePost","setIdPostDelete","addPost","setCreatePostClick","setTitlePostReading"]),
       }
     }
 )

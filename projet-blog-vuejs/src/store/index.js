@@ -24,7 +24,8 @@ export default createStore({
   id_post_edit: "",
   id_post_delete: "",
   postEdit: undefined,
-  createPostClick: false
+  createPostClick: false,
+  titlePostReading: ""
   }, 
   getters:{
     getArticles:  (state) => state.articles,
@@ -32,6 +33,7 @@ export default createStore({
     getPostEdit: (state)=> state.postEdit,
     getIdPostDelete: (state)=> state.id_post_delete,
     getCreatePostClick: (state)=>state.createPostClick,
+    getBlogFromTitle:(state)=>state.articles.find(e => e.title==state.titlePostReading.replace("_"," "))
   },
   mutations: {
     setIdPostEdit: (state,value) => state.id_post_edit = value,
@@ -47,7 +49,10 @@ export default createStore({
     addPost: (state,post)=>{
 state.articles.push(post);
     },
-    setCreatePostClick: (state,value)=>{state.createPostClick=value}
+    setCreatePostClick: (state,value)=>{state.createPostClick=value},
+    setTitlePostReading: (state,value)=> state.titlePostReading = value
+  ,
+  
   },
  
   actions: {
