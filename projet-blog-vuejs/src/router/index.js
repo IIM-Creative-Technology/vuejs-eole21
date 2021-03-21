@@ -3,7 +3,15 @@ import Blog from '../views/Blog.vue'
 import PageAdmin from '../views/PageAdmin.vue'
 import ReadBlog from '../views/ReadBlog.vue'
 
-const routes = [
+import Home from '../views/Home.vue'
+
+
+const routes = [ {
+  path: '/',
+  name: 'home',
+  component: Home
+},
+
   {
     path: '/blog',
     name: 'Blog',
@@ -27,6 +35,7 @@ const routes = [
     name: 'ReadBlog',
     component: ReadBlog
   },
+ 
   
 ]
 
