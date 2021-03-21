@@ -1,5 +1,5 @@
 <template>
-  <div v-on:click="readBlog" class="d-flex">
+  <div v-on:click="readBlog" class=" article d-flex">
     <div class="col-3">
       <img class="img-thumbnail" v-bind:src="article.img" alt="" />
     </div>
@@ -19,7 +19,7 @@
       class="d-flex flex-row align-items-start justify-content-center col-3"
     >
       <div v-on:click="onEdit(article)" class="btn">Editer</div>
-      <div v-on:click="deletePost(article.id)" class="supprimer btn">x</div>
+      <div v-on:click="deletePost(article.id)" class=" btn btn-danger">x</div>
     </div>
   </div>
 </template>
@@ -71,29 +71,7 @@ export default {
 </script>
 
 <style scoped>
-.grandediv {
-  background-color: #f9e4b7;
-  margin-left: 20px;
-  margin-top: 50px;
-  width: 1380px;
-  height: 300px;
-  border-radius: 5px;
-}
-
-.modifier {
-  margin-left: 1100px;
-  margin-right: 20px;
-  width: 80px;
-  height: 50px;
-}
-.supprimer {
-  background-color: #b22222;
-}
-.monimage {
-  padding-right: 1000px;
-  padding-top: 40px;
-}
-.texte {
-  margin-top: -200px;
+.article{
+ border: 5px solid gray;
 }
 </style>

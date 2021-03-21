@@ -1,7 +1,8 @@
 <template>
   <div>
     <blog-component
-      :modif="false"
+    class="m-3"
+        :modif="false"
       v-for="(item, index) in getArticles"
       :key="index"
       :article="item"
