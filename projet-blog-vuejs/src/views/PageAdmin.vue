@@ -10,7 +10,7 @@
       <!-- <p>bvdfbfdb</p> -->
     </div>
 
-    <div :style="{ display: getIdPostEdit ? 'block' : 'none' }" class="col-6">
+    <div v-if="getPostEdit != undifined" class="col-6">
       <modify-post></modify-post>
     </div>
   </div>

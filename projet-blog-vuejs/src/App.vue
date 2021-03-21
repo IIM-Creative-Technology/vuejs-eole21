@@ -10,7 +10,7 @@
       >
 
       <div><p>Login</p></div>
-      <button class="button">Créer une page</button>
+      <button class="btn-primary">Créer une page</button>
     </nav>
 
     <router-view />
@@ -23,6 +23,7 @@
 <script>
 // import PageAdmin from "./views/PageAdmin.vue";
 // import BlogComponent from "./components/BlogComponent.vue";
+// Import Bootstrap an BootstrapVue CSS files (order is important)
 
 export default {
   name: "App",

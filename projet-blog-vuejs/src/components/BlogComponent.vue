@@ -1,13 +1,17 @@
 <template>
   <div class="grandediv">
-    <div class="monimage"><img v-bind:src="article.img" alt="" /></div>
+    <div class="monimage">
+      <img class="img-thumbnail" v-bind:src="article.img" alt="" />
+    </div>
+
     <div class="texte">
       <div>
         <h1>{{ article.title }}</h1>
       </div>
       <div>
-        <p>{{ article.description }}</p>
+        <p>{{ article.meta_description }}</p>
       </div>
+      <p>{{ article.corps_texte }}</p>
     </div>
     <div :style="modif ? show : hidden" class="mesbuttons">
       <button v-on:click="onEdit(article)" class="modifier">Editer</button>
@@ -42,8 +46,8 @@ export default {
   },
   methods: {
     onEdit: function (article) {
+      this.setPostEdit(article);
       this.setIdPostEdit(article.id);
-      alert(this.getIdPostEdit);
     },
   },
   // Methode 2 pour afficher le titre et l'image
